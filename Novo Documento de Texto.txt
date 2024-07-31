@@ -1,16 +1,26 @@
 Como tomar banho; 
 
-estou dentro do meu quarto;
+estou dentro do meu quarto;  
 
 vou em direção ao meu guarda-roupa;
+
+paro em frente ao guarda-roupa;
 
 abro a porta do guarda roupa com as duas mãos;
 
 pego uma muda de roupa limpa (cueca, calça, camisa) com a mao direita; 
 
+coloco minha muda de roupa de baixo do meu braço direito;
+
 fecho a porta do guarda roupa com a mão esquerda; 
 
+a porta do meu quarto esta aberta;
+
+saio pela porta do meu quarto;
+
 caminho em direção ao banheiro;
+
+paro me frente a porta do banheiro;
 
 abro a porta do banheiro com a mão esquerda;
 
@@ -18,7 +28,7 @@ entro no banheiro e fecho a porta com a mão esquerda;
 
 tranco a porta do banheiro com a mão esquerda;
 
-caminho me direção ao vaso;
+caminho em direção ao vaso;
 
 fecho a tampo do vaso com a mão esquerda;
 
