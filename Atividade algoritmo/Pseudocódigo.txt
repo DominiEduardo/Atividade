@@ -1,0 +1,38 @@
+Algoritmo "Como tomar banho"
+
+var
+	Vestes; Guarda-roupa; Vaso:Boolean; Box; Sabonete; Shamppo:Boolean; Banheiro; Porta:Boolean; Tampa: Boolean; Registro:Boolean;
+
+Inicio
+
+	SE (Guarda-roupa != Porta);
+	Entao 
+	   (Porta == 0)
+
+	SE NAO (Porta == 1)
+ 	
+	
+
+	Retire suas vestes.
+	RETIRAR(Vestes)
+
+	Fechar a tampo do vaso
+	FECHAR(tampa_do_vaso)
+
+	Abra o box.
+	
+	Abrir o Registro.
+
+	Fechar o box.
+
+	Pegar o sabonete.
+
+	Passar o sabonete pelo corpo, se limpando.
+	
+	Enxaguar se, deixando a agua cair bem sobre o corpo.
+
+	Fechar o chuveiro.
+
+	Se secar utilizando uma " Toalha ".
+	
+	Colocar suas Vestes.
