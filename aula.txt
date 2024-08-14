@@ -35,3 +35,53 @@ IF(!2)
 	a | !a
 	0 | 1
 	1 | 0
+
+IF-ELSE
+	Utilizamos o IF para exeutar um bloco de codifo apenas se uma condicao for verdadeira. 
+	Else é ultilizado para fornecer um caminho alternativo quando uma condição é falsa.
+	IF ( a > 0 )  
+	{...}
+	ELSE
+	{..}
+
+Álem do IF e Else é possivel encadear multiplas condições usando else if. 
+Permitindo verificar várias condições em sequencia.
+	IF (condicao_01)
+	{...}
+	ELSE IF(condicao_02)
+	{...}
+	ELSE
+	{...}
+
+Switch-Case
+	É usado para simplificar verificação de umtiplos valores de uma variavel.
+	Switch(opcao)
+{
+	{ case 1 :
+ 	//codido p. opcao
+	break;
+	CASE2 :
+	//cod p. opcao
+	break;
+	Default
+	//cod p. qualquer valor
+}
+
+O switch é limitado inteiros, caracteres e enums.
+
+Typedef enum {
+	vermelho, verde, azul
+} cor;
+
+Typedef é usado para criar um novo nome para um tipo existente.
+
+Enum define um tipo enumerado.
+
+NOME_ENUM
+	É o nome do tipo que voce esta criando.
+
+Typedef enum {
+	a = 10
+	b = -5
+	c = a
+} misto;
