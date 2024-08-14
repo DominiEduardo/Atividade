@@ -1,0 +1,37 @@
+Definição de lógica proposicional:
+Logica proposicional é uma area da logica que estuda proposições, ou seja, 
+declarações que podem ser verdadeiros ou falsos, mas o mesmo tempo essas proposições 
+são os blocos basicos da logicas e são utulizadas para construir expressões logicas mais complexas.
+
+Proposição
+	P: esta chovendo.
+
+	q: é domingo
+
+Operadores lógicos:
+	AND (&&) = Retorna o verdadeiro apenas se ambas forem verdadeiras.
+
+IF(a>0 && b>0)
+	A | B | A&&B
+	0 | 0 | 0
+	0 | 1 | 0
+	1 | 0 | 0
+	1 | 1 | 1
+
+OR(||)
+	Retorna verdadeiro se pelo menos umas das proposições forem verdadeiras.
+
+IF(a>0 || b>0)
+	A | B | A||B
+	0 | 0 | 0
+	0 | 1 | 1
+	1 | 0 | 1
+	1 | 1 | 1
+
+NOT(!)
+	Inverte o valor logico da proposição
+
+IF(!2)
+	a | !a
+	0 | 1
+	1 | 0
