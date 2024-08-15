@@ -1,0 +1,33 @@
+FOR é um laço que repete um bloco especifico de vezes.
+	FOR(int i = 0, i<10, i++)
+{...
+	}
+
+WHILE é o comando que irá executar um bloco de codigo enquanto uma condição for verdadeira.
+	WHILE(a>0){
+...
+}
+
+DO WHILE é semelhante ao WHILE, mas a condião é verificada após a execução de bloco de código. 
+Garantindo que o bloco de codigo seja executado pelo menos uma vez independente da condição.
+
+Diferenças entre FOR, WHILE e DO-WHILE.
+
+FOR: A condição é verificada antes da executação do bloco, 
+mas a inicialização e o incremento são definidos na própria estrutra do loop
+
+WHILE: A condição é verificada antes da executação do bloco de código, 
+o que pode levar a zero interação se a condição for falsa na primeira verificação.
+
+DO-WHILE: A condição é verificada após a execução do bloco de código 
+garantindo que o bloco seja executado pelo menos uma vez.
+
+
+Uso Ideal
+FOR --> quando numero de interações for conhecido ou necessira de 
+controle explicito sobre a inicialização condição e incremento.
+
+WHILE --> Quando não se sabe o n° de interações.
+
+DO-WHILE --> Quando voce deseja garantir que o bloco de codigo 
+seja executado pelo menos uma vez independente da condição.
