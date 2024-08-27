@@ -5,11 +5,11 @@ double soma (double a, double b) {
 }
 
 double subtracao (double a, double b) {
-    return a + b;
+    return a - b;
 }
 
 double multiplicacao (double a, double b) {
-    return a + b;
+    return a * b;
 }
 
 double divisao (double a, double b) {
@@ -17,117 +17,103 @@ double divisao (double a, double b) {
         return a / b;
     }
         else {
-                printf("Não é possível divir com valor zero. \n");
+                printf("Não é possível dividir com valor zero. \n");
             return 0;
         }
 }
 
 double potenciacao (double a, double b) {
-    return a + b;
+    double resultado = 1;
+    for (int i = 0; i < b; i++) {
+        resultado *= a;
+    }
+    return resultado;
 }
 
-double raizQuadrada(double a, double b) {
-    return a + b;
+double raizQuadrada(double a) {
+    double x = a;
+    double y = (x * 1) / 2;
+    while (y < x) {
+        x = y;
+        y = (x * a / x) / 2;
+    }
+    return x;
 }
 
-double equacSG(double a, double b) {
-    return a + b;
-}
-
-void menuUsuario (){
-
-    printf("Escolha sua operação: \n");
-    printf("0. Sair Do Programa \n");
-    printf("1. Somar \n");
-    printf("2. Subtrair \n");
-    printf("3. Multiplicação \n");
-    printf("4. Divisão \n");
-    printf("5. Potenciação \n");
-    printf("6. Raiz Quadrada \n");
-    printf("7. Fatorial \n");
-    printf("8. MDC entre dois números \n");
-    printf("10. Equação do Segundo Grau \n");
-
-}
+double equacSG(double a, double b, double c) {
+    double delta = b * b - 4 * a * c;
+    if (delta < 0) {
+        printf("Não é possível este valor. \n");
+    }
+    else if (delta == 0){
+        double x = -b / (2 *a);
+        printf("Unica solucao. %.5lf \n", x);
+    }
+    else {
+        double x2 = (-b * raizQuadrada(delta)) / (2 * a);
+        double x3 = (-b  - raizQuadrada(delta)) / (2 * a);
+        printf ("Valor de numero 1 = %.5lf e numero 2 = %.5lf\n", x2, x3);
+        }
+    }
 
 int main (){
 
     int escolhaUsuario;
-    double num1, num2, resultado;
+    double num1, num2, num3;
 
-    do {
-        menuUsuario ();
-        printf("Digite sua escolha \n");
+    while (1){
+        printf("Menu para o usuario decidir sua operacao a ser calculada: \n");
+        printf("1. Sair Do Programa \n");
+        printf("2. Somar \n");
+        printf("3. Subtrair \n");
+        printf("4. Multiplicao \n");
+        printf("5. Divisao \n");
+        printf("6. Potenciacao \n");
+        printf("7. Raiz Quadrada \n");
+        printf("8. Fatorial \n");
+        printf("9. MDC entre dois numeros \n");
+        printf("10. MDM entre dois numeros \n");
+        printf("11. Equacao do Segundo Grau \n");
+        printf("Escolha a sua opção: ");
         scanf("%d", escolhaUsuario);
 
-        if (escolhaUsuario >= 1 && escolhaUsuario <= 4){
-            printf("Digite o primeiro número \n");
-            scanf("%lf", num1);
-            printf("Digite o segundo número \n");
-            scanf("%lf", num2);
-        }
         switch (escolhaUsuario) {
-        case 0:
-            printf("O usuário saiu do menu/operação \n");
-            break;
         case 1:
-            resultado = soma(num1, num2);
-            printf("A sua soma é: %.5lf \n", resultado);
-            break;
+            printf("O usuário saiu do menu/operação \n");
+            return 0;
         case 2:
-            resultado = subtracao(num1, num2);
-            printf("A sua subtração é: %.5lf \n", resultado);
-            break;
+            printf("Digite dois numeros para somar: ");
+            scanf ("%lf %lf", &num1, &num2);
+            printf("O resultado da soma é: %.5lf \n", soma(num1, num2));
         case 3:
-            resultado = multiplicacao(num1, num2);
-            printf("A sua multiplicação é: %.5lf \n", resultado);
+            printf("Digite dois numeros para subtrair: ");
+            scanf ("%lf %lf", &num1, &num2);
+            printf("O resultado da subtracao é: %.5lf \n", subtracao(num1, num2));
             break;
         case 4:
-            resultado = divisao(num1, num2);
-            if (num2 != 0) {
-            printf("A sua divisão é: %.5lf \n", resultado); }
+            printf("Digite dois numeros para multiplicar: ");
+            scanf ("%lf %lf", &num1, &num2);
+            printf("O resultado da multiplicacao é: %.5lf \n", multiplicacao(num1, num2));
             break;
         case 5:
-            resultado = divisao(num1, num2);
-            if (num2 != 0) {
-            printf("A sua divisão é: %.5lf \n", resultado); }
+            printf("Digite dois numeros para dividir: ");
+            scanf ("%lf %lf", &num1, &num2);
+            printf("O resultado da divisao é: %.5lf \n", divisao(num1, num2));
             break;
         case 6:
-            resultado = divisao(num1, num2);
-            if (num2 != 0) {
-            printf("A sua divisão é: %.5lf \n", resultado); }
+            printf("Digite dois numeros para realizar a potencia: ");
+            scanf ("%lf %lf", &num1, &num2);
+            printf("O resultado da potenciacao é: %.5lf \n", potenciacao(num1, num2));
             break;
         case 7:
-            resultado = divisao(num1, num2);
-            if (num2 != 0) {
-            printf("A sua divisão é: %.5lf \n", resultado); }
+            printf("Digite dois numeros para calcular a raiz quadrada: ");
+            scanf ("%lf %lf", &num1, &num2);
+            printf("O resultado da raiz quadrada escolhida é: %.5lf \n", raizQuadrada(num1));
             break;
-        case 8:
-            resultado = divisao(num1, num2);
-            if (num2 != 0) {
-            printf("A sua divisão é: %.5lf \n", resultado); }
-            break;
-        case 9:
-            resultado = divisao(num1, num2);
-            if (num2 != 0) {
-            printf("A sua divisão é: %.5lf \n", resultado); }
-            break;
-        case 10:
-            resultado = divisao(num1, num2);
-            if (num2 != 0) {
-            printf("A sua divisão é: %.5lf \n", resultado);
-            }
-            break;
-
         default:
-            printf("Esta opção está inválida.");
-            break;
+            printf("Opção inexistente.");
         }
-
-     printf("\n");
-
-    } while (escolhaUsuario != 5);
-
+    }
     return 0;
 }
 
