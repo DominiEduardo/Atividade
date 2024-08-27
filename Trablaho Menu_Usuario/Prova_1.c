@@ -74,13 +74,14 @@ int main (){
         printf("9. MDC entre dois numeros \n");
         printf("10. MDM entre dois numeros \n");
         printf("11. Equacao do Segundo Grau \n");
-        printf("Escolha a sua opção: ");
+        printf("Escolha a sua opcao: ");
         scanf("%d", escolhaUsuario);
 
         switch (escolhaUsuario) {
         case 1:
             printf("O usuário saiu do menu/operação \n");
             return 0;
+            break;
         case 2:
             printf("Digite dois numeros para somar: ");
             scanf ("%lf %lf", &num1, &num2);
@@ -107,7 +108,7 @@ int main (){
             break;
         case 7:
             printf("Digite dois numeros para calcular a raiz quadrada: ");
-            scanf ("%lf %lf", &num1, &num2);
+            scanf ("%lf", &num1);
             printf("O resultado da raiz quadrada escolhida é: %.5lf \n", raizQuadrada(num1));
             break;
         default:
