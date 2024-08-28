@@ -22,10 +22,10 @@ double divisao (double a, double b) {
         }
 }
 
-double potenciacao (double a, double b) {
+double potenciacao (double b, double e) {
     double resultado = 1;
-    for (int i = 0; i < b; i++) {
-        resultado *= a;
+    for (int i = 0; i < e; i++) {
+        resultado *= b;
     }
     return resultado;
 }
