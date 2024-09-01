@@ -1,16 +1,24 @@
 #include <stdio.h>
 
+// funcao para soma
+
 double soma(double a, double b) {
     return a + b;
 }
+
+    // funcao para subtracao
 
 double subtracao(double a, double b) {
         return a - b;
     }
 
+    //  funcao para multiplicacao
+
 double multiplicacao(double a, double b) {
         return a * b;
     }
+
+    //  funcao para divisao
 
 double divisao(double a, double b) {
         if (b != 0) {
@@ -22,6 +30,8 @@ double divisao(double a, double b) {
             }
     }
 
+    // funcao para a potenciacao
+
 double potenciacao(double base, int expoente) {
         double resultado = 1;
         for (int i = 0; i < expoente; i++) {
@@ -29,6 +39,8 @@ double potenciacao(double base, int expoente) {
         }
         return resultado;
     }
+
+    // funcao para fatorial
 
 double fatorial(int n) {
         if (n == 0) { return 1;
@@ -42,6 +54,8 @@ double fatorial(int n) {
         }
     }
 
+    //  funcao para raiz quadrada
+
 double raizQuadrada(double a) {
         double n;
         double chute = a;
@@ -49,7 +63,6 @@ double raizQuadrada(double a) {
         if (chute == 0) {
             return (0);
         } else {
-            //chute = 0.5 * (a+(a/a));
             for (n = 0; n < 100; n++) {
                 chute = 0.5 * (chute + (a / chute));
             }
@@ -58,27 +71,31 @@ double raizQuadrada(double a) {
 
     }
 
-double equacSG(double a, double b, double c) {
-        double delta = b * b - 4 * (a * c);
+    // funcao para quacao de segundo grau
 
-        if (delta < 0) {
-                printf("Nao e possivel este valor. \n");
-} else if (delta == 0) {
-    double x = -b / (2 * a);
-    printf("Unica solucao. %.5f \n", x);
+void equacSG(double a, double b, double c) {
+    double delta = b * b - 4 * (a * c);
+
+    if (delta < 0) {
+        printf("Nao e possivel este valor.\n");
+    } else if (delta == 0) {
+        double x = -b / (2 * a);
+        printf("unico metodo: %.5f \n", x);
     } else {
-    double x1 = (-b + raizQuadrada(delta)) / 2 * a;
-    double x2 = (-b - raizQuadrada(delta)) / 2 * a;
-    printf("Valor de X 1 = %.5f e X 2 = %.5f\n", x1, x2);
+        double x1 = (-b + raizQuadrada(delta)) / (2 * a);
+        double x2 = (-b - raizQuadrada(delta)) / (2 * a);
+        printf("Valor de X1 = %.5f e X2 = %.5f\n", x1, x2);
     }
 }
 
-void bandeira = 0;
+int bandeira = 1;
 
     int main() {
-        int escolhaUsuario;
-        double num1, num2, num3;
+        int escolhaUsuario;   // escolha do que o usuario deseja
+        double num1, num2, num3;    // numeros que estao armazenados em uma variavel que esta inclementada junto as funcoes
         int expoente;
+
+        // laco que ira printar para o usuario deseja calcular
 
         while (1) {
                 printf("\n Menu para o usuario decidir sua operacao a ser calculada: \n");
@@ -95,6 +112,8 @@ void bandeira = 0;
         printf("10. MDM entre dois numeros \n");
         printf("Escolha a sua opcao: ");
         scanf("%d", &escolhaUsuario);
+
+        // fim do que o laco ira printar para o usuario 
 
         switch (escolhaUsuario) {
             case 1: printf("O usuario saiu do menu/operacao \n");
@@ -121,8 +140,7 @@ void bandeira = 0;
     if (bandeira == 1) {
     printf("O resultado da divisao eh: %.5f \n", divisao(num1, num2));
     }
-    else {
-        bandeira = 0;
+    else (bandeira == 0) {
         printf ("Nao eh possivel a divisao com o valor 0.");
     }
     break;
@@ -146,10 +164,13 @@ void bandeira = 0;
     case 9:
     printf("Digite tres numeros para calcular a equacao de segundo grau: ");
     scanf("%lf %lf %lf", &num1, &num2, &num3);
-    printf("O resultado da equacao do 2° grau eh: %.5f \n", equacSG(num1, num2, num3));
+    printf("O resultado da equacao do 2ï¿½ grau eh: %.5f \n", equacSG(num1, num2, num3));
     break;
     default: printf("opcao inexistente. \n");
 }
     }
+
+        // o que tem por tras alem da impressao que o laco ira fazer, o usuario nao consegue visualizar 
+
     return 0;
         }
