@@ -1,82 +1,26 @@
 #include <stdio.h>
 
-// funcao para soma
-double soma(double a, double b) {
-    return a + b;
-}
+// prototipos das funcoes
 
-// funcao para subtracao
-double subtracao(double a, double b) {
-    return a - b;
-}
+double soma(double a, double b);
 
-// funcao para multiplicacao
-double multiplicacao(double a, double b) {
-    return a * b;
-}
+double subtracao(double a, double b);
 
-// funcao para divisao
-double divisao(double a, double b) {
-    if (b != 0) {
-        return a / b;
-    } else {
-        printf("Nao eh possivel dividir com valor zero. \n");
-        return 0;
-    }
-}
+double multiplicacao(double a, double b);
 
-// funcao para potenciacao
-double potenciacao(double base, int expo) {
-    double resultado = 1;
-    for (int i = 0; i < expo; i++) {
-        resultado *= base;
-    }
-    return resultado;
-}
+double divisao(double a, double b);
 
-// funcao para fatorial
-double fatorial(int n) {
-    if (n == 0) { 
-        return 1;
-    } else {
-        double resultado = 1;
-        for (int i = 1; i <= n; i++) {
-            resultado *= i;
-        }
-        return resultado;
-    }
-}
+double potenciacao(double base, int expo);
 
-// funcao para raiz quadrada
-double raizQuadrada(double a) {
-    double n;
-    double chute = a;
+int fatorial(int n);
 
-    if (chute == 0) {
-        return 0;
-    } else {
-        for (n = 0; n < 100; n++) {
-            chute = 0.5 * (chute + (a / chute));
-        }
-        return chute;
-    }
-}
+double raizQuadrada(double a);
 
-// funcao para equacao de segundo grau
-void equacSG(double a, double b, double c) {
-    double delta = b * b - 4 * (a * c);
+double equacSG(double a, double b, double c);
 
-    if (delta < 0) {
-        printf("valor invalido. \n");
-    } else if (delta == 0) {
-        double x = -b / (2 * a);
-        printf("Unico metodo: %.5f\n", x);
-    } else {
-        double x1 = (-b + raizQuadrada(delta)) / (2 * a);
-        double x2 = (-b - raizQuadrada(delta)) / (2 * a);
-        printf("valor de X1 = %.5f e X2 = %.5f\n", x1, x2);
-    }
-}
+int MDC (int a, int b);
+
+int MMC (int a, int b);
 
 int main() {
     int escolhaUsuario;   // escolha do que o usuario deseja
@@ -101,7 +45,7 @@ int main() {
         // vereficacao de um inteiro
         if (scanf("%d", &escolhaUsuario) != 1) {
             printf("escolha nao autorizada, por obsequio, digitar um valor inteiro. \n");
-            // Limpeza do buffer
+            // limpeza do buffer
             while (getchar() != '\n');
             continue;
         }
@@ -154,7 +98,7 @@ int main() {
                 printf("Digite um numero inteiro para calcular o fatorial: ");
                 int numFatorial;
                 scanf("%d", &numFatorial);
-                printf("O resultado da fatoracao eh: %.5f\n", fatorial(numFatorial));
+                printf("O resultado da fatoracao eh: %d \n", fatorial(numFatorial));
                 break;
 
             case 9: // caso usuario escolher equacao do segundo grau, ira printar isso
@@ -163,10 +107,119 @@ int main() {
                 equacSG(num1, num2, num3);
                 break;
 
-            default: // caso o usuario escolher um numero fora do menu, ira printar isso  
+            case 10: // caso usuario escolher MDC, ira printar isso
+            printf("Digite dois numeros para calcular o MDC: ");
+            int numMDC, numMDC2;
+            scanf("%d %d", &numMDC, &numMDC2);
+            printf("O resultado da operacao eh: %d \n", MDC(numMDC, numMDC2));
+            break;
+
+            case 11: // caso usuario escolher MMC, ira printar isso
+            printf("Digite dois numeros para descobrir o valor do MMC: ");
+            int numMMC, numMMC2;
+            scanf("%d %d", numMMC, numMMC2);
+            printf("O resultado da operacao eh: %d \n", MMC(numMMC, numMMC2));
+            break;
+
+            default: // caso o usuario escolher um numero fora do menu, ira printar isso
                 printf("opcao inexistente.\n");
         }
     }
 
     return 0;
+}
+
+// funcao para soma
+double soma(double a, double b) {
+    return a + b;
+}
+
+// funcao para subtracao
+double subtracao(double a, double b) {
+    return a - b;
+}
+
+// funcao para multiplicacao
+double multiplicacao(double a, double b) {
+    return a * b;
+}
+
+// funcao para divisao
+double divisao(double a, double b) {
+    if (b != 0) {
+        return a / b;
+    } else {
+        printf("Nao eh possivel dividir com valor zero(0). \n");
+        return 0;
+    }
+}
+
+// funcao para potenciacao
+double potenciacao(double base, int expo) {
+    double resultado = 1;
+    for (int i = 0; i < expo; i++) {
+        resultado *= base;
+    }
+    return resultado;
+}
+
+// funcao para raiz quadrada
+double raizQuadrada(double a) {
+    double n;
+    double chute = a;
+
+    if (chute == 0) {
+        return 0;
+    } else {
+        for (n = 0; n < 100; n++) {
+            chute = 0.5 * (chute + (a / chute));
+        }
+        return chute;
+    }
+}
+
+// funcao para fatorial
+int fatorial(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        int resultado = 1;
+        for (int i = 1; i <= n; i++) {
+            resultado *= i;
+        }
+        return resultado;
+    }
+}
+
+// funcao para equacao de segundo grau
+double equacSG(double a, double b, double c) {
+    double delta = b * b - 4 * (a * c);
+
+    if (delta < 0) {
+        printf("valor invalido. \n");
+    } else if (delta == 0) {
+        double x = -b / (2 * a);
+        printf("unica opcao: %.5f\n", x);
+    } else {
+        double x1 = (-b + raizQuadrada(delta)) / (2 * a);
+        double x2 = (-b - raizQuadrada(delta)) / (2 * a);
+        printf("valor de X1 = %.5f e X2 = %.5f\n", x1, x2);
+    }
+}
+
+// funcao para MDC
+int MDC (int a, int b) {
+    int r;
+    while (b != 0) {
+        r = a%b;
+        a = b;
+        b = r;
+    }
+    return a;
+}
+
+int MMC (int a, int b) {
+    int r;
+    r = (a * b) / (MDC(a, b));
+    return r;
 }
