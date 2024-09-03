@@ -29,17 +29,17 @@ int main() {
     // laco que ira printar para o usuario decidir o que deseja calcular
     while (1) {
         printf("\nMenu para o usuario decidir sua operacao a ser calculada:\n");
-        printf("1. Sair Do Programa\n");
-        printf("2. Somar\n");
-        printf("3. Subtrair\n");
-        printf("4. Multiplicar\n");
-        printf("5. Divisao\n");
-        printf("6. Potenciacao\n");
-        printf("7. Raiz Quadrada\n");
-        printf("8. Fatorial\n");
-        printf("9. Equacao do Segundo Grau\n");
-        printf("10. MDC entre dois numeros\n");
-        printf("11. MDM entre dois numeros\n");
+        printf("0. Sair Do Programa\n");
+        printf("1. Somar\n");
+        printf("2. Subtrair\n");
+        printf("3. Multiplicar\n");
+        printf("4. Divisao\n");
+        printf("5. Potenciacao\n");
+        printf("6. Raiz Quadrada\n");
+        printf("7. Fatorial\n");
+        printf("8. Equacao do Segundo Grau\n");
+        printf("9. MDC entre dois numeros\n");
+        printf("10. MMC entre dois numeros\n");
         printf("Escolha a sua opcao: \n");
 
         // vereficacao de um inteiro
@@ -51,35 +51,35 @@ int main() {
         }
 
         switch (escolhaUsuario) {
-            case 1: // caso usuario escolher sair do menu, ira printar isso
+            case 0: // caso usuario escolher sair do menu, ira printar isso
                 printf("O usuario saiu do menu.\n");
                 return 0;
 
-            case 2: // caso usuario escolher soma, ira printar isso
+            case 1: // caso usuario escolher soma, ira printar isso
                 printf("Digite dois numeros para somar: ");
                 scanf("%lf %lf", &num1, &num2);
                 printf("O resultado da soma eh: %.5f\n", soma(num1, num2));
                 break;
 
-            case 3: // caso usuario escolher subtracao, ira printar isso
+            case 2: // caso usuario escolher subtracao, ira printar isso
                 printf("Digite dois numeros para subtrair: ");
                 scanf("%lf %lf", &num1, &num2);
                 printf("O resultado da subtracao eh: %.5f\n", subtracao(num1, num2));
                 break;
 
-            case 4: // caso usuario escolher multiplicacao, ira printar isso
+            case 3: // caso usuario escolher multiplicacao, ira printar isso
                 printf("Digite dois numeros para multiplicar: ");
                 scanf("%lf %lf", &num1, &num2);
                 printf("O resultado da multiplicacao eh: %.5f\n", multiplicacao(num1, num2));
                 break;
 
-            case 5: // caso usuario escolher divisao, ira printar isso
+            case 4: // caso usuario escolher divisao, ira printar isso
                 printf("Digite dois numeros para dividir: ");
                 scanf("%lf %lf", &num1, &num2);
                 printf("O resultado da divisao eh: %.5lf\n", divisao(num1, num2));
                 break;
 
-            case 6: // caso usuario escolher potenciacao, ira printar isso
+            case 5: // caso usuario escolher potenciacao, ira printar isso
                 printf("Digite a base da potencia: ");
                 scanf("%lf", &num1);
                 printf("Digite o expoente da potencia (numero inteiro): ");
@@ -88,36 +88,45 @@ int main() {
                 printf("O resultado da potenciacao eh: %.5lf\n", potenciacao(num1, expoente));
                 break;
 
-            case 7: // caso usuario escolher raiz quadrada, ira printar isso
-                printf("Digite um numero para calcular a raiz quadrada: ");
+            case 6: // caso usuario escolher raiz quadrada, ira printar isso
+                printf("Digite um numero para calcular a raiz quadrada: \n");
                 scanf("%lf", &num1);
+                if (num1 < 0 ) {
+                    printf("nao eh possivel calcular a raiz quadrada de um numero negativo. \n");
+                }
+                else {
                 printf("O resultado da raiz quadrada escolhida eh: %.5f\n", raizQuadrada(num1));
+                 }
                 break;
 
-            case 8: // caso usuario escolher fatorial, ira printar isso
-                printf("Digite um numero inteiro para calcular o fatorial: ");
+            case 7: // caso usuario escolher fatorial, ira printar isso
+                 printf("Digite um numero inteiro para calcular o fatorial: ");
                 int numFatorial;
-                scanf("%d", &numFatorial);
-                printf("O resultado da fatoracao eh: %d \n", fatorial(numFatorial));
+                if (scanf("%d", &numFatorial)!= 1 || numFatorial < 0) {
+                    printf("entrada invalida, digite outro numero nao sendo negativo. \n"); 
+                    scanf("%*s");
+                } else {
+                    printf("O resultado do fatorial eh: %d \n", fatorial(numFatorial));
+                }
                 break;
 
-            case 9: // caso usuario escolher equacao do segundo grau, ira printar isso
+            case 8: // caso usuario escolher equacao do segundo grau, ira printar isso
                 printf("Digite tres numeros para calcular a equacao de segundo grau: ");
                 scanf("%lf %lf %lf", &num1, &num2, &num3);
                 equacSG(num1, num2, num3);
                 break;
 
-            case 10: // caso usuario escolher MDC, ira printar isso
+            case 9: // caso usuario escolher MDC, ira printar isso
             printf("Digite dois numeros para calcular o MDC: ");
             int numMDC, numMDC2;
             scanf("%d %d", &numMDC, &numMDC2);
             printf("O resultado da operacao eh: %d \n", MDC(numMDC, numMDC2));
             break;
 
-            case 11: // caso usuario escolher MMC, ira printar isso
+            case 10: // caso usuario escolher MMC, ira printar isso
             printf("Digite dois numeros para descobrir o valor do MMC: ");
             int numMMC, numMMC2;
-            scanf("%d %d", numMMC, numMMC2);
+            scanf("%d %d", &numMMC, &numMMC2);
             printf("O resultado da operacao eh: %d \n", MMC(numMMC, numMMC2));
             break;
 
