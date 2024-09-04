@@ -1,3 +1,4 @@
+
 FOR é um laço que repete um bloco especifico de vezes.
 	FOR(int i = 0, i<10, i++)
 {...

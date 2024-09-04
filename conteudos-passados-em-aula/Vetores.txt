@@ -1,0 +1,13 @@
+Vetores: String
+
+	O termo string serve para identificar uma sequencia de caracteres.
+	Na prática das strings são usadas para representar textos.
+
+	Em linguagens C ao contrário de outras linguagens, não existe tipos de string de forma nortiva. Dessa forma para representa-lá devemos criar um vetor de caracteres.
+
+	Char Nome_do_Vetor [tamanho]
+
+	Dessa maneira reservamos na memoria espaço para armazenar uma sequencia de caracteres.
+
+	Quando utlizamos o %s para faer a leitura de N caracteres atrves do comando scanf(" "); 
+	ocorre que que o ultimo caractere de nossa leitura sempre sera \o que serve para indicar o final da string.
