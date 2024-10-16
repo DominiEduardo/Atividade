@@ -10,7 +10,7 @@
         return soma;
     }
 
-    int soma_Impares (int vet[5], int tamanho) {
+    int soma_Impares (int vet[10], int tamanho) {
         int soma = 0;
         for (int i = 0; i < tamanho; i++) {
             if (vet[i] % 2 != 0){
@@ -26,7 +26,7 @@
         int i, j, cont, aux;
         int pares = 0;
         int impares = 0;
-        int somaPares, somaImpares;
+        int somaPares = 0, somaImpares = 0;
 
     printf("digite 10 numeros: \n");
 
@@ -40,22 +40,28 @@
 
     //verificação dos numeros pares e impares
 
+    printf("pares: ");
+
     for (i = 0; i < 10; i++) {
         if(vet[i] % 2 == 0){
-            pares++;
-        } else {
-            impares++;
+            printf("%d ", vet[i]);
         }
     }
 
-    printf("pares: %d \n\n", pares);
+    printf("\n\nimpares: ");
 
-    printf("impares %d \n\n", impares);
+    for (i = 0; i < 10; i++) {
+        if(vet[i] % 2 != 0){
+            printf("%d ", vet[i]);
+        }
+    }
+
+    printf("\n\n");
 
     //atribuindo a funcao dentro das variaveis
 
-    somaPares = soma_pares(vet, 5);
-    somaImpares = soma_Impares(vet, 5);
+    somaPares = soma_pares(vet, 10);
+    somaImpares = soma_Impares(vet, 10);
 
     printf("soma dos pares: %d\n\n", somaPares);
     printf("soma dos impares: %d\n\n", somaImpares);
@@ -97,5 +103,8 @@
     for (i = 0; i < 10; i++) {
         printf("%d ", vet[i]);
     }
+
+    printf("\n");
+
     return 0;
 }
