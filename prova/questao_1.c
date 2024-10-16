@@ -1,34 +1,32 @@
 #include <stdio.h>
 
-int soma_pares (int vetor[10], int tamanho) {
-    int soma = 0;
-    for (int i = 0; i < tamanho; i++) {
-        if (vetor[i] % 2 == 0){
-            soma += vetor[i];
+    int soma_pares (int vetor[10], int tamanho) {
+        int soma = 0;
+        for (int i = 0; i < tamanho; i++) {
+            if (vetor[i] % 2 == 0){
+                soma += vetor[i];
+            }
         }
+        return soma;
     }
 
-    return soma;
-}
-
-int soma_Impares (int vet[5], int tamanho) {
-    int soma = 0;
-    for (int i = 0; i < tamanho; i++) {
-        if (vet[i] % 2 != 0){
-            soma += vet[i];
+    int soma_Impares (int vet[5], int tamanho) {
+        int soma = 0;
+        for (int i = 0; i < tamanho; i++) {
+            if (vet[i] % 2 != 0){
+                soma += vet[i];
+            }
         }
+        return soma;
     }
 
-    return soma;
-}
+    int main () {
 
-int main () {
-
-    int vet[10];
-    int i, j, cont, aux;
-    int pares = 0;
-    int impares = 0;
-    int somaPares, somaImpares;
+        int vet[10];
+        int i, j, cont, aux;
+        int pares = 0;
+        int impares = 0;
+        int somaPares, somaImpares;
 
     printf("digite 10 numeros: \n");
 
@@ -37,6 +35,8 @@ int main () {
     for (i = 0; i < 10; i++) {
         scanf("%d", &vet[i]);
     }
+
+    printf("\n");
 
     //verificação dos numeros pares e impares
 
@@ -48,18 +48,21 @@ int main () {
         }
     }
 
-    printf("%d numeros pares\n", pares);
-    printf("%d numeros impares\n", impares);
+    printf("pares: %d \n\n", pares);
+
+    printf("impares %d \n\n", impares);
 
     //atribuindo a funcao dentro das variaveis
 
     somaPares = soma_pares(vet, 5);
     somaImpares = soma_Impares(vet, 5);
 
-    printf("a soma dos numeros pares sao: %d\n", somaPares);
-    printf("a soma dos numeros impares sao: %d\n", somaImpares);
+    printf("soma dos pares: %d\n\n", somaPares);
+    printf("soma dos impares: %d\n\n", somaImpares);
 
     //verificação dos numeros primos
+
+    printf("primos: ");
 
     for (i = 0; i < 10; i++) {
         cont = 0;
@@ -69,9 +72,11 @@ int main () {
                 }
             }
             if (cont == 2) {
-                printf("%d eh numero primo\n", vet[i]);
+                printf("%d ", vet[i]);
             }
     }
+
+    printf("\n\n");
 
     //verificacao da ordenacao crescentes dos numeros
 
@@ -87,10 +92,10 @@ int main () {
 
     //print dos valores em ordem crescente
 
-    printf("valores em ordem crescentes: \n");
+    printf("valores em ordem crescentes: ");
+
     for (i = 0; i < 10; i++) {
         printf("%d ", vet[i]);
     }
-
     return 0;
 }
