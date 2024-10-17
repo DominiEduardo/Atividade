@@ -1,0 +1,39 @@
+
+
+QUESTÕES:
+
+
+Q1- Com suas palavras. Explique o que e um Banco de Dados. 
+
+
+Q2- Diferencie DADO de INFORMAÇÃO.
+
+
+Q3- Descreva a função de um SGBD e site as vantagens e desvantagens conforme visto na aula.
+
+
+Q4- O que é um banco de dados relacional e como ele funciona. Evidêncie a diferença desse modelo em relação aos outros modelos existentes.
+
+
+Q5- Com base no modelo de banco de dados relacional forneça um exemplo de duas tabelas com suas tuplas e atributos e o relacionamento existentes entre elas.
+
+
+RESPOSTAS:
+
+
+Q1- Algo que armazena dados, informações, objetos, entre mais coisas. Coisas que necessitam ser guardadas/mantidas.
+
+
+Q2- Dado é somente uma parte de uma informação. Exemplo: Meu nome é >Domini<.
+    Informação é um conjunto de dados. Exemplo: Eu resido na casa de cor branca e bege, na rua fernando noronha, no bairro santa luzia.
+
+
+Q3- Tem como função o gerenciamento, manipulamento, controle de dados. 
+    Algumas desantagens apontadas por usuários são: complexidade no uso, gasto com o sistema, e também o seu desempenho.
+
+
+Q4- Banco de Dados Relacional (RDB) contém tabelas com colunas, linhas, cardinalidades. Ele funciona com relações entre essas tabelas, com as chaves-primárias e chaves-estrangeiras.
+    Algumas vantagens segundos os usuários são: Segurança do sistemas é eficaz, é de fácil usabilidade, e seu precisão eficiente, não contendo desduplicação de dados.
+
+
+Q5- 
