@@ -36,4 +36,11 @@ Q4- Banco de Dados Relacional (RDB) contém tabelas com colunas, linhas, cardina
     Algumas vantagens segundos os usuários são: Segurança do sistemas é eficaz, é de fácil usabilidade, e seu precisão eficiente, não contendo desduplicação de dados.
 
 
-Q5- 
+Q5- ______________________                              ___________________
+   |      CURSO           |                             |      ALUNO       |
+   |                      |                             |                  |
+   | Código_curso (PK)    |                             |  matricula (PK)  | 
+   | Duração_curso        |  _________________________  |  nome            |
+   | Nome_curso           |             1:m             |  dt_nascimento   |
+   | Data_publicação	  |                             |  bairro          |
+   |______________________|                             | Código_curso (FK)|
