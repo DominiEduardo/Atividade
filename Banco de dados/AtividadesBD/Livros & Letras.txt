@@ -1,0 +1,75 @@
+CREATE TABLE autores(
+	id_nome serial PRIMARY KEY,
+	nome_autor varchar(100),
+	dt_nasc date,
+	nacionalidade varchar(30)
+);
+
+SELECT * FROM autores;
+
+DROP TABLE autores;
+
+ALTER TABLE autores RENAME COLUMN nacionalidade_autor TO nacionalidade;
+
+INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Paulo Coelho', '23/10/1943', 'Brasileiro');
+INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Franz Kafka', '21/11/1963', 'Alemão');
+INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('George Orwell', '13/08/1893', 'Britanico');
+INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Machado de Assis', '12/05/1878', 'Brasileiro');
+INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Graciliano Ramos', '06/11/1973', 'Brasileiro');
+
+
+CREATE TABLE livros(
+	id_livros serial PRIMARY KEY,
+	titulo_livro varchar(50), 
+	autor_idfk int, FOREIGN KEY (autor_idfk) REFERENCES autores(id_autor),
+	data_publicacao date,
+	preco numeric(10,2),
+	estoque bigint
+);
+
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('A metamorfose', '3', '10/11/1999', '49.90', '56');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('1984', '4', '07/01/1954', '39.50', '47');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('A Revolucao dos Bichos', '4', '23/06/1949', '59.00', '56');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Dom Casmurro', '5', '23/05/1939', '45.90', '22');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Memórias Póstumas de Brás Cubas', '5', '08/03/1925', '49.90', '13');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('O Alquimista', '2', '04/01/1979', '29.90', '36');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Vidas Secas', '6', '04/05/1997', '39.70', '26');
+
+SELECT * FROM livros;
+
+DROP TABLE livros;
+
+CREATE TABLE clientes(
+	id_clientes serial PRIMARY KEY,
+	nome_cliente varchar(100),
+	email varchar(100),
+	telefone varchar(20),
+	data_cadastro date
+);
+
+SELECT * FROM clientes;
+
+DROP TABLE clientes;
+
+CREATE TABLE vendas(
+	id_vendas serial PRIMARY KEY,
+	clientes_idfk int, FOREIGN KEY (clientes_idfk) REFERENCES clientes(id_clientes),
+	data_venda date,
+	valor_total numeric(10,2)
+);
+
+SELECT * FROM vendas;
+
+DROP TABLE vendas;
+
+CREATE TABLE itens_vendas(
+	id_item serial PRIMARY KEY,
+	venda_idfk int, FOREIGN KEY (venda_idfk) REFERENCES vendas(id_vendas),
+	livro_idfk int, FOREIGN KEY (livro_idfk) REFERENCES livros(id_livros),
+	quantidade bigint,
+	preco_unitario numeric(10,2)
+);
+
+SELECT * FROM itens_vendas;
+
+DROP TABLE itens_vendas;
