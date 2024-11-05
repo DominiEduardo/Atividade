@@ -21,19 +21,19 @@ INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Graciliano Ramo
 CREATE TABLE livros(
 	id_livros serial PRIMARY KEY,
 	titulo_livro varchar(50), 
-	autor_idfk int, FOREIGN KEY (autor_idfk) REFERENCES autores(id_autor),
+	autor_idfk int, FOREIGN KEY (autor_idfk) REFERENCES autores(id_nome),
 	data_publicacao date,
 	preco numeric(10,2),
 	estoque bigint
 );
 
-INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('A metamorfose', '3', '10/11/1999', '49.90', '56');
-INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('1984', '4', '07/01/1954', '39.50', '47');
-INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('A Revolucao dos Bichos', '4', '23/06/1949', '59.00', '56');
-INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Dom Casmurro', '5', '23/05/1939', '45.90', '22');
-INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Memórias Póstumas de Brás Cubas', '5', '08/03/1925', '49.90', '13');
-INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('O Alquimista', '2', '04/01/1979', '29.90', '36');
-INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Vidas Secas', '6', '04/05/1997', '39.70', '26');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('A metamorfose', '2', '10/11/1999', '49.90', '56');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('1984', '3', '07/01/1954', '39.50', '47');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('A Revolucao dos Bichos', '3', '23/06/1949', '59.00', '56');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Dom Casmurro', '4', '23/05/1939', '45.90', '22');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Memórias Póstumas de Brás Cubas', '4', '08/03/1925', '49.90', '13');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('O Alquimista', '1', '04/01/1979', '29.90', '36');
+INSERT INTO livros(titulo_livro, autor_idfk, data_publicacao, preco, estoque) VALUES ('Vidas Secas', '5', '04/05/1997', '39.70', '26');
 
 SELECT * FROM livros;
 
@@ -47,6 +47,14 @@ CREATE TABLE clientes(
 	data_cadastro date
 );
 
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Joao Silva Machado', 'joaom4ch4d0@gmail.com', '(46) 99987-98767', '20/03/2020');
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Ana Julia Beto', 'juliaanaA@gmail.com', '(46) 99934-8765', '10/06/2019');
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Bento Jesus de Alencar', 'jesusbent0@gmail.com', '(46) 99932-6543', '12/06/2019');
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Gustavo Pires', 'gustav0p1r3s@gmail.com', '(46) 99935-6345', '11/11/2021');
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Kevin Silva Guimaraes', 'guimaraeskevin@gmail.com', '(46) 99933-4324', '09/05/2020');
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Arthur Siega', 'SiegaArthur@gmail.com', '(46) 99934-7657', '23/08/2021');
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Gustavo Breier', 'Gustavobr3i3r@gmail.com', '(46) 99956-8765', '13/12/2021');
+
 SELECT * FROM clientes;
 
 DROP TABLE clientes;
@@ -57,6 +65,18 @@ CREATE TABLE vendas(
 	data_venda date,
 	valor_total numeric(10,2)
 );
+
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('12/08/2023', '2', '29.90');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('30/04/2023', '3', '29.90');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('05/01/2021', '4', '39.70');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('27/11/2023', '5', '49.90');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('21/12/2021', '7', '59.00');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('17/07/2023', '3', '39.50');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('19/09/2022', '1', '59.00');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('09/03/2023', '6', '29.00');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('04/07/2023', '2', '39.50');
+INSERT INTO vendas(data_venda, clientes_idfk, valor_total) VALUES ('18/10/2022', '1', '49.00');
+
 
 SELECT * FROM vendas;
 
@@ -69,6 +89,15 @@ CREATE TABLE itens_vendas(
 	quantidade bigint,
 	preco_unitario numeric(10,2)
 );
+
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('1', '8', '3', '59.00');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('4', '12', '2', '39.50');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('2', '14', '4', '39.70');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('7', '9', '1', '59.00');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('4', '10', '2', '29.00');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('7', '11', '5', '39.70');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('3', '13', '3', '29.00');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('6', '11', '2', '49.00');
 
 SELECT * FROM itens_vendas;
 
