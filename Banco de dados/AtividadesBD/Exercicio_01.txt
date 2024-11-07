@@ -120,7 +120,42 @@ inner join autores on autor_idfk = id_nome
 where clientes_idfk = 2
 
 
-SELECT SUM(valor_total) FROM itens_vendas
-INNER JOIN vendas ON venda_idfk = id_vendas
+SELECT SUM(valor_total) AS soma_total FROM vendas
+
+
+/*nome autor e titulo do livro*/
+
+
+SELECT nome_autor, titulo_livro 
+FROM autores
+INNER JOIN livros ON autor_idfk = id_nome
+
+
+/*encontrar nome dos clientes e data de venda*/
+
+
+SELECT id_vendas, nome_cliente, data_venda
+FROM clientes
+INNER JOIN vendas ON clientes_idfk = id_clientes
+
+
+/*nome autor, titulo do livro e quantidade de estoque de cada livro*/
+
+
+SELECT nome_autor, titulo_livro, estoque 
+FROM autores
+INNER JOIN livros ON autor_idfk = id_nome
+INNER JOIN itens_vendas ON livro_idfk = id_livros
+
+
+/*titulo do livro e valor total da venda, com apenas livros superiores a 50R$*/
+
+
+SELECT titulo_livro, preco
+FROM itens_vendas 
 INNER JOIN livros ON livro_idfk = id_livros
-where id_cliente = 3
+INNER JOIN vendas ON venda_idfk = id_vendas
+WHERE preco > 50.00 
+
+
+/**/
