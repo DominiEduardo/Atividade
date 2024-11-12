@@ -12,6 +12,7 @@ DROP TABLE autores;
 ALTER TABLE autores RENAME COLUMN nacionalidade_autor TO nacionalidade;
 
 INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Paulo Coelho', '23/10/1943', 'Brasileiro');
+INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Dostoiésvski', '23/10/1943', 'Brasileiro');
 INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Franz Kafka', '21/11/1963', 'Alemão');
 INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('George Orwell', '13/08/1893', 'Britanico');
 INSERT INTO autores(nome_autor, dt_nasc, nacionalidade) VALUES ('Machado de Assis', '12/05/1878', 'Brasileiro');
@@ -54,6 +55,8 @@ INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Gust
 INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Kevin Silva Guimaraes', 'guimaraeskevin@gmail.com', '(46) 99933-4324', '09/05/2020');
 INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Arthur Siega', 'SiegaArthur@gmail.com', '(46) 99934-7657', '23/08/2021');
 INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('Gustavo Breier', 'Gustavobr3i3r@gmail.com', '(46) 99956-8765', '13/12/2021');
+INSERT INTO clientes(nome_cliente, email, telefone, data_cadastro) VALUES ('domini eduardo', 'Gustavobr3i3r@gmail.com', '(46) 99956-8765', '13/12/2021');
+
 
 SELECT * FROM clientes;
 
@@ -97,8 +100,10 @@ INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VAL
 INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('4', '3', '2', '29.00');
 INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('7', '5', '5', '39.70');
 INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('3', '6', '3', '29.00');
-INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('6', '1', '2', '49.00');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('6', '1', '2', '49.00' );
 INSERT INTO itens_vendas(venda_idfk, livro_idfk, quantidade, preco_unitario) VALUES ('5', '1', '2', '49.00');
+INSERT INTO itens_vendas(venda_idfk, livro_idfk, preco_unitario) VALUES ('5', '1', '49.00');
+
 
 SELECT * FROM itens_vendas;
 
@@ -155,7 +160,93 @@ SELECT titulo_livro, preco
 FROM itens_vendas 
 INNER JOIN livros ON livro_idfk = id_livros
 INNER JOIN vendas ON venda_idfk = id_vendas
-WHERE preco > 50.00 
+WHERE preco > 50.00;
 
+
+/*nome ciente, titulo livros e venda de cada livro*/
+
+SELECT nome_cliente, titulo_livro
+FROM clientes
+INNER JOIN vendas ON clientes.id_clientes = vendas.clientes_idfk
+INNER JOIN itens_vendas ON vendas.id_vendas = itens_vendas.venda_idfk
+INNER JOIN livros ON itens_vendas.livro_idfk = livros.id_livros;
+
+/*nome do autor e o preço do livro */	
+
+SELECT nome_autor, titulo_livro, preco 
+FROM autores
+INNER JOIN livros ON autor_idfk = id_nome
+WHERE preco BETWEEN 40.00 AND 70.00;
+
+/*nome autor e a data de publicação depois dos anos 2000*/
+
+SELECT nome_autor, titulo_livro, data_publicacao
+FROM autores
+INNER JOIN livros ON id_nome = autor_idfk
+WHERE data_publicacao > '31/12/1959';
+
+/*encontrar os nomes dos clientes e o valor total que ultrapassam 100r$*/
+
+SELECT nome_cliente, valor_total
+FROM clientes
+INNER JOIN vendas ON id_clientes = clientes_idfk
+WHERE valor_total > 35.00;
+
+/*titulo do livro e quantidade comprada acima de 1 unidade*/
+
+SELECT titulo_livro, quantidade 
+FROM livros
+INNER JOIN itens_vendas ON id_livros = livro_idfk
+WHERE quantidade > 2;
+
+/*nome do cliente, titulo do livro e preço unitario igual a 39,90R$*/
+
+SELECT nome_cliente, titulo_livro
+FROM clientes
+INNER JOIN vendas ON clientes.id_clientes = vendas.clientes_idfk
+INNER JOIN itens_vendas ON vendas.id_vendas = itens_vendas.venda_idfk
+INNER JOIN livros ON itens_vendas.livro_idfk = livros.id_livros
+WHERE preco_unitario = 39.70;
+
+
+/*LEFT JOIN*/
+
+/*autores e seus livros, incluindo autores que nao tem livros cadastrados*/
+
+SELECT nome_autor, titulo_livro
+FROM autores
+LEFT JOIN livros ON id_nome = autor_idfk
+
+/*encontrar clientes que realizaram compras, e clientes que ainda nao realizaram compras*/
+
+SELECT nome_cliente, id_vendas
+FROM clientes
+LEFT JOIN vendas ON id_clientes = clientes_idfk
+
+/*LIVRO E SUAS QUANTIDADES VENDIDAS, INCLUINDO OS QUE NAO FORAM VENDIDOS*/
+
+SELECT titulo_livro, quantidade
+FROM livros
+LEFT JOIN itens_vendas ON id_livros = livro_idfk
+
+/*nome de cada cliente e o valor gasto em cada compra, incluindo cliente que nao gastaram nada*/
+
+SELECT nome_cliente, valor_total
+FROM clientes
+LEFT JOIN vendas ON id_clientes = clientes_idfk
+
+/*listar autores e seus livros apos o ano 1950, incluindo os autores que nao tenham livros publicados após essa data*/
+
+SELECT nome_autor, titulo_livro, data_publicacao
+FROM autores
+LEFT JOIN livros ON id_nome = autor_idfk
+WHERE data_publicacao >= 1950
+
+/*listar livros e suas vendas, incluindo livros que nao foram vendidos*/
+
+SELECT titulo_livro, valor_total
+FROM livros
+LEFT JOIN vendas ON clientes_idfk = id_clientes
+LEFT JOIN itens_itens ON id_vendas = venda_idfk
 
 /**/
