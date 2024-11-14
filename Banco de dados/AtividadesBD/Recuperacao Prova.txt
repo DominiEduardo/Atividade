@@ -1,0 +1,175 @@
+CREATE TABLE clientes (
+id_cliente serial PRIMARY KEY,
+nome_cliente varchar(100),
+cpf_cliente bigint,
+dt_nasc date,
+rua varchar (100),
+numero_casa bigint,
+cidade varchar(50),
+estado varchar(20),
+CEP varchar(15)
+);
+
+DROP TABLE clientes;
+
+SELECT * FROM clientes;
+
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('maria silva', 12345678900, '1985-05-15', 'rua das laranjeiras', 100, 'sao paulo', 'SP', '01000-000'); 
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('joao santos', 98765432100, '1990-07-20', 'AvPaulista', 1799, 'sao paulo', 'SP', '01310-200');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('ana pereira', 11223344556, '1987-11-10', 'rua verde', 234, 'campinas', 'SP', '13040-000');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('carlos moura', 33445566778, '1975-02-25', 'Av.Brasil', 3000, 'rio de janeiro', 'RJ', '22050-001');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('laura dias', 99887766554, '1982-09-05', 'rua das flores', 1100, 'curibita', 'PR', '80050-010');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('pedro rocha', 22334455667, '1995-01-15', 'rua das palmeiras', 500, 'belo horizonte', 'MG', '30130-000');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('vanessa lopes', 55443322110, '1989-04-27', 'av.Independência', 210, 'porto alegre', 'RS', '90020-001');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('fernando almeida', 66778899001, '1978-11-05', 'rua central', 303, 'florianópolis', 'SC', '88030-200');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('julia souza', 11235813213, '1992-12-10', 'rua augusta', 800, 'sao paulo', 'SP', '01400-400');
+INSERT INTO clientes(nome_cliente, cpf_cliente, dt_nasc, rua, numero_casa, cidade, estado, CEP) VALUES ('bruno oliveira', 99887722112, '1991-03-18', 'av.Angélica', 350, 'sao paulo', 'SP', '01227-200');
+INSERT INTO clientes(nome_cliente) VALUES ('domini eduardo');
+INSERT INTO clientes(nome_cliente) VALUES ('GABREIEL REFATTI');
+
+
+CREATE TABLE pedidos (
+numero_pedidos serial PRIMARY KEY,
+clientes_idfk int, FOREIGN KEY (clientes_idfk) REFERENCES clientes(id_cliente),
+dt_criacao date,
+status varchar(20)
+);
+
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (1, '2024-10-01', 'concluido');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (2, '2024-10-02', 'Em Andamento');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (3, '2024-10-03', 'concluido');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (4, '2024-10-04', 'Cancelado');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (5, '2024-10-05', 'Em Andamento');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (6, '2024-10-06', 'concluido');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (7, '2024-10-07', 'Em Andamento');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (8, '2024-10-08', 'concluido');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (9, '2024-10-09', 'Cancelado');
+INSERT INTO pedidos(clientes_idfk, dt_criacao, status) VALUES (10, '2024-10-10', 'Em Andamento');
+
+DROP TABLE pedidos;
+
+SELECT * FROM pedidos;
+
+
+CREATE TABLE produtos (
+id_produtos serial PRIMARY KEY,
+fornecedores_idfk int, FOREIGN KEY (fornecedores_idfk) REFERENCES fornecedores(id_fornecedores),
+descricao_prod varchar(50),
+nome_produto varchar(100),
+preco_uni numeric(10,2),
+quantidade bigint
+);
+
+DROP TABLE produtos;
+
+SELECT * FROM produtos;
+
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('notebook dell', 'notebook i5 8GB 256GM SSD', 3500.00, 15);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('smartphone samsung', 'galaxy s21 128GB', 2800.00, 30);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('impressora HP', 'impressora a jato de tinta', 600.00, 20);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('teclado mecanico', 'teclado RGB gamer', 250.00, 50);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('mouse logitech', 'mouse óptico sem fio', 120.00, 60);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('monitor LG', 'monitor 24 polegadas', 700.00, 25);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('HD externo seagate', 'HD 1TB USB 3.0', 350.00, 40);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('SSD kingston', 'SSD 512GB', 400.00, 35);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('camera logitech', 'camera de videoconferência', 950.00, 10);
+INSERT INTO produtos(descricao_prod, nome_produto, preco_uni, quantidade) VALUES ('caixa de som JBL', 'caixa de som bluethooth', 300.00, 20);
+
+CREATE TABLE fornecedores (
+id_fornecedores serial PRIMARY KEY,
+nome_forn varchar(100),
+cnpj_forn bigint,
+telefone varchar(20),
+rua varchar(50),
+numero_casa bigint,
+cidade varchar(50),
+estado varchar(15),
+CEP varchar(15)
+);
+
+INSERT INTO fornecedores(nome_forn, cnpj_forn, telefone, rua, numero_casa, cidade, estado, CEP) VALUES ('TECH DISTRIBUIDORA', 12345678000190, '(11) 4000-3000', 'rua da liberdade', 500, 'sao paulo', 'SP', '01500-000');
+INSERT INTO fornecedores(nome_forn, cnpj_forn, telefone, rua, numero_casa, cidade, estado, CEP) VALUES ('ELETRONICOS BRASIL', 98765432000180, '(21) 2500-4000', 'rua das flores', 80, 'rio de janeiro', 'RJ', '20030-001') ;
+INSERT INTO fornecedores(nome_forn, cnpj_forn, telefone, rua, numero_casa, cidade, estado, CEP) VALUES ('FastTech', 34567890000150, '(31) 3500-3200', 'Av.Amazonias', 1200, 'belo horizonte', 'MG', '30140-000');
+INSERT INTO fornecedores(nome_forn, cnpj_forn, telefone, rua, numero_casa, cidade, estado, CEP) VALUES ('Digital Solutions', 45678912000170, '(41) 3200-2500','av.comercio', 750, 'curitiba', 'PR', '80060-050');
+INSERT INTO fornecedores(nome_forn, cnpj_forn, telefone, rua, numero_casa, cidade, estado, CEP) VALUES ('PC Hardware', 56789123000130, '(51) 3200-3200','rua sete de setembro', 999, 'porto alegre', 'RS', '90030-020');
+INSERT INTO fornecedores(nome_forn, cnpj_forn, telefone, rua, numero_casa, cidade, estado, CEP) VALUES ('EletroShop', 6789123400010, '(21) 2500-8000','av.presidente', 100, 'rio de janeiro', 'RJ', '20040-040');
+
+DROP TABLE fornecedores;
+
+SELECT * FROM fornecedores;
+
+
+CREATE TABLE pedidos_prod (
+id_itenspd serial PRIMARY KEY, 
+pedidos_idfk int, FOREIGN KEY (pedidos_idfk) REFERENCES pedidos(numero_pedidos),
+produto_idfk int, FOREIGN KEY (produto_idfk) REFERENCES produtos(id_produtos),
+quantidade_comp bigint,
+valor_item numeric(10,2)
+);
+
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (1, 1, 1, 3500.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (1, 4, 2, 500.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (2, 2, 1, 2800.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (3, 3, 1, 600.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (3, 4, 1, 250.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (4, 5, 2, 240.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (5, 6, 1, 700.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (6, 7, 3, 1050.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (7, 8, 2, 800.00);
+INSERT INTO pedidos_prod(pedidos_idfk, produto_idfk, quantidade_comp, valor_item) VALUES (8, 9, 1, 950.00);
+
+DROP TABLE pedidos_prod;
+
+SELECT * FROM pedidos_prod;
+
+
+/*nome dos clientes, data de criação e os produtos associados a cada pedido*/
+
+SELECT nome_cliente, dt_criacao, nome_produto
+FROM clientes
+INNER JOIN pedidos ON clientes_idfk = id_cliente
+INNER JOIN pedidos_prod ON pedidos_idfk = numero_pedidos
+INNER JOIN produtos ON produto_idfk = id_produtos
+
+
+/*nome dos clientes e numero de cada pedido, mesmo se ainda nao realizaram pedido*/
+
+
+SELECT nome_cliente, numero_pedidos
+FROM clientes
+LEFT JOIN pedidos ON clientes_idfk = id_cliente
+
+
+/*nomes produtos e nomes dos clientes*/
+
+SELECT nome_cliente, nome_produto
+FROM clienteS
+RIGHT JOIN pedidos ON clientes_idfk = id_cliente
+RIGHT JOIN pedidos_prod ON pedidos_idfk = numero_pedidos
+RIGHT JOIN produtos ON produto_idfk = id_produtos
+
+
+/*ENCONTRAR O MENOR PREÇO DOS PRODUTOS DISPONIVEIS*/
+
+SELECT MIN (preco_uni) AS menor_valor FROM produtos;
+
+
+/*IDENTIFICAR A MAIOR QUANTIDADE DE UM PRODUTO EM ESTOQUE*/
+
+SELECT MAX (quantidade) AS maior_quantidade FROM produtos;
+
+
+/*CALCULAR O VALOR MEDIO DOS PRODUTOS INCLUIDOS EM CADA PEDIDO*/
+
+SELECT AVG (valor_item) AS media_valor FROM pedidos_prod;
+
+
+/*CALCULAR O TOTAL GASTO POR CADA CLIENTE EM SEUS PEDIDOS E IMPRMIR O CLIENTE COM O MAIOR GASTO*/
+
+SELECT SUM (valor_item) AS total_gasto, nome_cliente 
+FROM clientes 
+INNER JOIN pedidos ON clientes_idfk = id_cliente 
+INNER JOIN pedidos_prod ON pedidos_idfk = id_cliente
+INNER JOIN produtos ON produto_idfk = id_produtos
+GROUP BY(nome_cliente)
+order by total_gasto desc limit 1
